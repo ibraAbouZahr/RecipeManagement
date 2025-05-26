@@ -5,6 +5,7 @@ import {
   faEdit,
 } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { Link } from "react-router-dom";
 
 const HeroSection: React.FC = () => {
   return (
@@ -84,8 +85,8 @@ const HeroSection: React.FC = () => {
                 </svg>
               </button>
 
-              <a
-                href="/features"
+              <Link
+                to="/about"
                 className="flex items-center justify-center w-full sm:w-auto px-8 py-3 border font-semibold rounded-lg transition duration-300 transform hover:scale-105 hover:opacity-80"
                 style={{
                   borderColor: "var(--color-primary)",
@@ -94,22 +95,19 @@ const HeroSection: React.FC = () => {
                 }}
               >
                 See How It Works
-              </a>
+              </Link>
             </div>
 
             {/* Feature highlights */}
             <div className="mt-12 grid grid-cols-3 gap-6 text-center lg:text-left">
               <div className="flex flex-col items-center lg:items-start">
                 <div
-                  className="p-3 rounded-lg mb-2"
-                  style={{
-                    backgroundColor: "var(--color-primary)",
-                    opacity: 0.1,
-                  }}
+                  className="p-3 rounded-lg mb-2 bg-white/10" // background with opacity
                 >
                   <FontAwesomeIcon
                     icon={faUtensils}
-                    className="font-bold text-2xl text-white"
+                    className="text-text text-2xl font-bold"
+                    bounce
                   />
                 </div>
                 <span
@@ -121,15 +119,12 @@ const HeroSection: React.FC = () => {
               </div>
               <div className="flex flex-col items-center lg:items-start">
                 <div
-                  className="p-3 rounded-lg mb-2"
-                  style={{
-                    backgroundColor: "var(--color-primary)",
-                    opacity: 0.1,
-                  }}
+                  className="p-3 rounded-lg mb-2 bg-white/10" // background with opacity
                 >
                   <FontAwesomeIcon
                     icon={faSearch}
-                    className="font-bold text-2xl text-nav"
+                    className="text-text text-2xl font-bold"
+                    beat
                   />
                 </div>
                 <span
@@ -141,15 +136,12 @@ const HeroSection: React.FC = () => {
               </div>
               <div className="flex flex-col items-center lg:items-start">
                 <div
-                  className="p-3 rounded-lg mb-2"
-                  style={{
-                    backgroundColor: "var(--color-primary)",
-                    opacity: 0.1,
-                  }}
+                  className="p-3 rounded-lg mb-2 bg-white/10" // background with opacity
                 >
                   <FontAwesomeIcon
                     icon={faEdit}
-                    className="font-bold text-2xl text-nav"
+                    className="text-text text-2xl font-bold"
+                    shake
                   />
                 </div>
                 <span

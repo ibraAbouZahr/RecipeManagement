@@ -1,3 +1,4 @@
+import { Link } from "react-router-dom";
 export default function AboutPage() {
   return (
     <main className="max-w-4xl mx-auto px-6 py-12">
@@ -97,9 +98,11 @@ export default function AboutPage() {
         <p className="text-text/70 mb-6">
           Ready to organize your culinary journey?
         </p>
-        <button className="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg font-medium transition-colors">
-          Start Cooking
-        </button>
+        <Link to={"/"}>
+          <button className="bg-primary hover:bg-primary/90 text-white px-8 py-3 rounded-lg font-medium transition-colors">
+            Start Cooking
+          </button>
+        </Link>
       </div>
     </main>
   );
