@@ -40,7 +40,7 @@ export default function Navbar() {
           <Link to="/" onClick={() => handleNavClick("/")}>
             <h1 className="text-2xl">
               {" "}
-              <FontAwesomeIcon icon={faNoteSticky} /> Notes.
+              <FontAwesomeIcon icon={faNoteSticky} /> Recipe.
             </h1>
           </Link>
         </div>
