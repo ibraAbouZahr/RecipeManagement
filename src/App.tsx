@@ -4,6 +4,7 @@ import Chatbot from "./pages/Chatbot";
 import Navbar from "./components/Navbar";
 import Footer from "./components/Footer";
 import RecipeCrud from "./components/RecipeCrud";
+import About from "./pages/About";
 
 function App() {
   return (
@@ -11,8 +12,9 @@ function App() {
       <Navbar />
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/chatbot" element={<Chatbot />} />
         <Route path="/RecipeCrud" element={<RecipeCrud />} />
+        <Route path="/chatbot" element={<Chatbot />} />
+        <Route path="/about" element={<About />} />
       </Routes>
       <Footer></Footer>
     </Router>

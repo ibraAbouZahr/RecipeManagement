@@ -130,7 +130,7 @@ export default function RecipeManagement() {
   };
 
   const handleAddRecipe = () => {
-    if (!formData.name.trim()) return;
+    if (!formData.name.trim()) return; // Ensure name is not empty
 
     const newRecipe: Recipe = {
       ...formData,
@@ -140,9 +140,9 @@ export default function RecipeManagement() {
       instructions: formData.instructions.filter((inst) => inst.trim() !== ""),
     };
 
-    setRecipes([...recipes, newRecipe]);
+    setRecipes([...recipes, newRecipe]); // Add new recipe to the list
     setIsAddingRecipe(false);
-    resetForm();
+    resetForm(); // Call reset form function
   };
 
   const handleEditRecipe = () => {
@@ -170,7 +170,7 @@ export default function RecipeManagement() {
   };
 
   const handleDeleteRecipe = (id: string) => {
-    setRecipes(recipes.filter((recipe) => recipe.id !== id));
+    setRecipes(recipes.filter((recipe) => recipe.id !== id)); // Filter recipe list with the recipe to delete
   };
 
   const toggleRecipeStatus = (
@@ -200,11 +200,12 @@ export default function RecipeManagement() {
       instructions: [...recipe.instructions],
       metadata: { ...recipe.metadata },
       status: { ...recipe.status },
-    });
+    }); // set form data to the recipe being edited
     setIsAddingRecipe(true);
   };
 
   const addIngredient = () => {
+    // Add a new empty ingredient field
     setFormData({
       ...formData,
       ingredients: [...formData.ingredients, ""],
