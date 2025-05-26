@@ -25,41 +25,56 @@ interface ChatbotConfig {
 }
 
 // Mock API service (replace with your actual API)
+// 1. Recipe-focused ChatbotService
 class ChatbotService {
-  private static readonly API_KEY = import.meta.env.VITE_API_KEY;
-
   static async sendMessage(message: string): Promise<string> {
-    if (!this.API_KEY) {
-      throw new Error("API key missing. Check your .env file.");
-    }
+    // Simulate API call with recipe-focused responses
+    await new Promise((resolve) =>
+      setTimeout(resolve, 1000 + Math.random() * 2000)
+    );
 
-    try {
-      const response = await fetch(
-        "https://api.openai.com/v1/chat/completions",
-        {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            Authorization: `Bearer ${this.API_KEY}`,
-          },
-          body: JSON.stringify({
-            model: "gpt-3.5-turbo",
-            messages: [{ role: "user", content: message }],
-            max_tokens: 150,
-          }),
-        }
+    const responses = {
+      hello:
+        "Hello! I'm your recipe assistant. What would you like to cook today?",
+      help: "I can help you with recipes, cooking tips, ingredient substitutions, and meal planning. Try asking about specific dishes or ingredients!",
+      pasta:
+        "For a quick pasta dish, try aglio e olio: spaghetti with garlic, olive oil, red pepper flakes, and parsley. Cook pasta al dente, sauté minced garlic in olive oil, toss together with pasta water. Simple and delicious!",
+      chicken:
+        "Chicken is versatile! For juicy baked chicken: season with salt, pepper, garlic powder, and herbs. Bake at 425°F for 20-25 minutes. Internal temp should reach 165°F. Let rest 5 minutes before serving.",
+      vegetarian:
+        "Great veggie options: Try stuffed bell peppers with quinoa and black beans, or a hearty lentil curry with coconut milk. Both are protein-rich and satisfying!",
+      dessert:
+        "For a quick dessert, try chocolate mug cake: mix 4 tbsp flour, 4 tbsp sugar, 2 tbsp cocoa powder, 3 tbsp milk, 3 tbsp oil, and a pinch of salt. Microwave for 90 seconds!",
+      breakfast:
+        "Quick breakfast ideas: overnight oats with berries, avocado toast with everything bagel seasoning, or scrambled eggs with herbs. All ready in minutes!",
+      substitution:
+        "Common substitutions: 1 egg = 1/4 cup applesauce, 1 cup milk = 1 cup almond milk, 1 cup butter = 3/4 cup olive oil. What ingredient do you need to substitute?",
+      time: "For quick meals (under 30 min): stir-fries, pasta dishes, grilled sandwiches, or sheet pan meals. What's your time limit?",
+      healthy:
+        "Healthy cooking tips: use herbs and spices instead of salt, bake or grill instead of frying, add vegetables to every meal, and choose whole grains over refined ones.",
+      default:
+        "I'm here to help with all your cooking questions! Ask me about specific recipes, ingredients, cooking techniques, meal planning, or dietary restrictions.",
+    };
+
+    const lowerMsg = message.toLowerCase();
+
+    // Check for multiple keywords
+    const matchedKey = Object.keys(responses).find((key) => {
+      if (key === "default") return false;
+      return (
+        lowerMsg.includes(key) ||
+        (key === "substitution" &&
+          (lowerMsg.includes("substitute") || lowerMsg.includes("replace"))) ||
+        (key === "time" &&
+          (lowerMsg.includes("quick") ||
+            lowerMsg.includes("fast") ||
+            lowerMsg.includes("minutes"))) ||
+        (key === "healthy" &&
+          (lowerMsg.includes("diet") || lowerMsg.includes("nutrition")))
       );
+    });
 
-      if (!response.ok) {
-        throw new Error(`API error: ${response.status}`);
-      }
-
-      const data = await response.json();
-      return data.choices[0]?.message?.content || "No response received";
-    } catch (error) {
-      console.error("ChatbotService error:", error);
-      throw error;
-    }
+    return responses[matchedKey as keyof typeof responses] || responses.default;
   }
 }
 
