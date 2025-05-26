@@ -412,6 +412,11 @@ const ChatbotIntegrationDemo: React.FC = () => {
           <p className="text-lg text-text mb-6">
             Using a Chatbot with React and TypeScript!
           </p>
+          <p className="text-lg text-text mb-6">
+            Ask my Chatbot for{" "}
+            <span className="font-semibold">Recipe Advice</span> or{" "}
+            <span className="font-semibold text-text">Recomendations</span>.
+          </p>
 
           {/* Demo Selector */}
           <div className="flex justify-center gap-4 mb-8">
