@@ -1,0 +1,30 @@
+@import "tailwindcss";
+
+@theme {
+  --color-bg: #f9fafb; /* Soft off-white */
+  --color-primary: #6366f1; /* Elegant indigo */
+  --color-text: #111827; /* Dark gray text */
+  --color-card: #ffffff; /* Clean white cards */
+}
+
+.dark {
+  --color-bg: #0f172a; /* Deep dark slate */
+  --color-primary: #818cf8; /* Softer indigo */
+  --color-text: #f1f5f9; /* Light gray text */
+  --color-card: #1e293b; /* Card background in dark mode */
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  background-color: var(--color-bg);
+  color: var(--color-text);
+}
+
+html,
+body {
+  height: 100%;
+}
